@@ -75,7 +75,7 @@ printf 'alpha\nbeta' | ./gnl_demo
 
 `BUFFER_SIZE` 기본값은 4096입니다. 예제의 `4`는 한 줄이 여러 번의 읽기에 걸쳐 누적되는 동작을 확인하기 위한 값입니다.
 
-`OPEN_MAX`를 헤더에서 제공하지 않는 환경에 맞춰 위 명령은 상태 배열 크기를 1024로 지정합니다. 이 빌드에서는 유효한 FD를 `0 ≤ fd < 1024` 범위에서 사용합니다. Bonus 빌드는 소스 두 개를 각각 `get_next_line_bonus.c`·`get_next_line_utils_bonus.c`로 바꿉니다.
+`OPEN_MAX`를 헤더에서 제공하지 않는 환경에 맞춰 위 명령은 상태 배열 크기를 1024로 지정합니다. 이 빌드에서는 유효한 FD를 `0 ≤ fd < 1024` 범위에서 사용합니다. 현재 기본·Bonus 구현의 경계 검사는 `fd > OPEN_MAX`이므로 `fd == OPEN_MAX`를 거르지 못하고 상태 배열 범위 밖에 접근할 수 있습니다. 호출 시 이 값은 사용하지 않아야 합니다. Bonus 빌드는 소스 두 개를 각각 `get_next_line_bonus.c`·`get_next_line_utils_bonus.c`로 바꿉니다.
 
 ## 학습 기록
 
