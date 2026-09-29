@@ -70,6 +70,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (s3);
 }
 
+/* 개행을 찾으면 그 앞까지 반환(1)하고 남은 바이트를 보관한다. EOF의 마지막 조각은 0을 반환한다. */
 int		get_nl(int fd, char **line, char **strg, char *nlpt)
 {
 	char *temp;
@@ -93,6 +94,7 @@ int		get_nl(int fd, char **line, char **strg, char *nlpt)
 	}
 }
 
+/* 정적 strg 배열은 fd마다 읽고 남은 바이트를 다음 호출까지 유지한다. */
 int		get_next_line(int fd, char **line)
 {
 	static char	*strg[OPEN_MAX];
